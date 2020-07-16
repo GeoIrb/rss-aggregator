@@ -1,5 +1,4 @@
 # rss-aggregator
-----
 
 Сервис Rss-агрегатор
 Функционал:
@@ -16,13 +15,13 @@
 CREATE TABLE public.news (
 	id serial NOT NULL,
 	title varchar NOT NULL,
-	pubdate timestamp NOT NULL,
+	pubDate timestamp NOT NULL,
 	CONSTRAINT news_pkey PRIMARY KEY (id)
 );
 ```
 # ToDo
  * [x] Добавление отслеживания RSS ленты
  * [x] Остановка отслеживания RSS ленты
- * [ ] Получение новостей по части заголовка
+ * [x] Получение новостей по части заголовка
  * [ ] Клиент
  * [ ] Тест

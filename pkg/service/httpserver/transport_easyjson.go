@@ -4,7 +4,7 @@ package httpserver
 
 import (
 	json "encoding/json"
-	models "github.com/GeoIrb/tochka-test/pkg/models"
+	models "github.com/GeoIrb/rss-aggregator/pkg/models"
 	easyjson "github.com/mailru/easyjson"
 	jlexer "github.com/mailru/easyjson/jlexer"
 	jwriter "github.com/mailru/easyjson/jwriter"

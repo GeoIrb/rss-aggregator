@@ -12,15 +12,15 @@ import (
 	"github.com/kelseyhightower/envconfig"
 	"github.com/valyala/fasthttp"
 
-	"github.com/GeoIrb/tochka-test/pkg/converter"
-	"github.com/GeoIrb/tochka-test/pkg/filter"
-	"github.com/GeoIrb/tochka-test/pkg/postgres"
-	"github.com/GeoIrb/tochka-test/pkg/rss"
-	"github.com/GeoIrb/tochka-test/pkg/service"
-	"github.com/GeoIrb/tochka-test/pkg/service/httperrors"
-	"github.com/GeoIrb/tochka-test/pkg/service/httpserver"
-	"github.com/GeoIrb/tochka-test/pkg/site"
-	"github.com/GeoIrb/tochka-test/pkg/storage"
+	"github.com/GeoIrb/rss-aggregator/pkg/converter"
+	"github.com/GeoIrb/rss-aggregator/pkg/filter"
+	"github.com/GeoIrb/rss-aggregator/pkg/postgres"
+	"github.com/GeoIrb/rss-aggregator/pkg/rss"
+	"github.com/GeoIrb/rss-aggregator/pkg/service"
+	"github.com/GeoIrb/rss-aggregator/pkg/service/httperrors"
+	"github.com/GeoIrb/rss-aggregator/pkg/service/httpserver"
+	"github.com/GeoIrb/rss-aggregator/pkg/site"
+	"github.com/GeoIrb/rss-aggregator/pkg/storage"
 )
 
 type configuration struct {
@@ -34,11 +34,11 @@ type configuration struct {
 	DBConnectDriver string `envconfig:"DB_CONNECT_DRIVER" default:"postgres"`
 	DBConnectLayout string `envconfig:"DB_CONNECT_LAYOUT" default:"host=%s port=%d user=%s password=%s dbname=%s sslmode=disable"`
 
-	StorageInsertNews   string `envconfig:"STORAGE_INSERT_NEWS" default:"INSERT INTO public.news (title, pubDate) VALUES ($1, $2)"`
-	StorageSelectNews   string `envconfig:"STORAGE_SELECT_NEWS" default:"SELECT (title, pubDate) FROM public.news WHERE title like '%' || $1 || '%'"`
+	StorageInsertNews   string `envconfig:"STORAGE_INSERT_NEWS" default:"INSERT INTO public.news (\"title\", \"pubDate\") VALUES ($1, $2)"`
+	StorageSelectNews   string `envconfig:"STORAGE_SELECT_NEWS" default:"SELECT \"title\", \"pubDate\" FROM public.news WHERE title like '%' || $1 || '%'"`
 	StorageAllTitleNews string `envconfig:"STORAGE_ALL_TITLE_NEWS" default:""`
 
-	IntervalTracking time.Duration `envconfig:"INTERVAL_TRACKING" default:"1m"`
+	IntervalTracking time.Duration `envconfig:"INTERVAL_TRACKING" default:"10m"`
 	SiteTimeout      time.Duration `envconfig:"SITE_TIMEOUT" default:"2s"`
 }
 

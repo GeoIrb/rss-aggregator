@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/GeoIrb/tochka-test/pkg/models"
+	"github.com/GeoIrb/rss-aggregator/pkg/models"
 )
 
 type storage interface {
@@ -107,7 +107,7 @@ func (s *service) StopTracking(ctx context.Context, url string) (err error) {
 		cancel  interface{}
 		isExist bool
 	)
-	if cancel, isExist = s.cache.Load(url); isExist {
+	if cancel, isExist = s.cache.Load(url); !isExist {
 		err = fmt.Errorf("%s is not exist", url)
 		return
 	}

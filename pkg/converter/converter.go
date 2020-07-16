@@ -1,7 +1,7 @@
 package converter
 
 import (
-	"github.com/GeoIrb/tochka-test/pkg/models"
+	"github.com/GeoIrb/rss-aggregator/pkg/models"
 )
 
 // Converter ...

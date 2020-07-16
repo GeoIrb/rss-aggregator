@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/GeoIrb/tochka-test/pkg/models"
+	"github.com/GeoIrb/rss-aggregator/pkg/models"
 	"github.com/valyala/fasthttp"
 )
 

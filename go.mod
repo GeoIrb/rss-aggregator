@@ -1,4 +1,4 @@
-module github.com/GeoIrb/tochka-test
+module github.com/GeoIrb/rss-aggregator
 
 go 1.14
 
