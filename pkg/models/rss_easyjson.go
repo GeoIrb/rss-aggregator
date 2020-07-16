@@ -36,29 +36,6 @@ func easyjson4bfd1b6eDecodeGithubComGeoIrbTochkaTestPkgModels(in *jlexer.Lexer, 
 			continue
 		}
 		switch key {
-		case "News":
-			if in.IsNull() {
-				in.Skip()
-				out.News = nil
-			} else {
-				in.Delim('[')
-				if out.News == nil {
-					if !in.IsDelim(']') {
-						out.News = make([]News, 0, 2)
-					} else {
-						out.News = []News{}
-					}
-				} else {
-					out.News = (out.News)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v1 News
-					(v1).UnmarshalEasyJSON(in)
-					out.News = append(out.News, v1)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
 		default:
 			in.SkipRecursive()
 		}
@@ -73,22 +50,6 @@ func easyjson4bfd1b6eEncodeGithubComGeoIrbTochkaTestPkgModels(out *jwriter.Write
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"News\":"
-		out.RawString(prefix[1:])
-		if in.News == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v2, v3 := range in.News {
-				if v2 > 0 {
-					out.RawByte(',')
-				}
-				(v3).MarshalEasyJSON(out)
-			}
-			out.RawByte(']')
-		}
-	}
 	out.RawByte('}')
 }
 
