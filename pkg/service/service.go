@@ -18,8 +18,16 @@ type site interface {
 	GetDate(url string) (data []byte, err error)
 }
 
-type parser interface {
-	News(data []byte, format string, interval time.Duration) (news [][]string)
+type rss interface {
+	Parse(data []byte) (news models.Rss)
+}
+
+type filter interface {
+	News(src []models.News, format string, interval time.Duration) (dst []models.News)
+}
+
+type converter interface {
+	News(src []models.News) (dst [][]string)
 }
 
 // Service ...
@@ -52,9 +60,11 @@ type Service interface {
 }
 
 type service struct {
-	site    site
-	parser  parser
-	storage storage
+	site      site
+	rss       rss
+	filter    filter
+	converter converter
+	storage   storage
 
 	cache    sync.Map
 	interval time.Duration
@@ -88,7 +98,7 @@ func (s *service) StartTracking(ctx context.Context, url, format string) (err er
 	trackingCtx, trackingCnl := context.WithCancel(context.Background())
 	go s.tracking(trackingCtx, url, format)
 
-	s.cache.Store("url", trackingCnl)
+	s.cache.Store(url, trackingCnl)
 	return
 }
 
@@ -129,22 +139,28 @@ func (s *service) tracking(ctx context.Context, url, format string) {
 
 func (s *service) getNews(url, format string) {
 	if data, err := s.site.GetDate(url); err == nil {
-		s.newsChan <- s.parser.News(data, format, s.interval)
+		rss := s.rss.Parse(data)
+		news := s.filter.News(rss.News, format, s.interval)
+		s.newsChan <- s.converter.News(news)
 	}
 }
 
 // NewService ...
 func NewService(
 	site site,
-	parser parser,
+	rss rss,
+	filter filter,
+	converter converter,
 	storage storage,
 	interval time.Duration,
 ) Service {
 	return &service{
-		site:     site,
-		parser:   parser,
-		storage:  storage,
-		interval: interval,
+		site:      site,
+		rss:       rss,
+		filter:    filter,
+		converter: converter,
+		storage:   storage,
+		interval:  interval,
 
 		newsChan: make(chan [][]string, 1),
 	}

@@ -12,8 +12,10 @@ import (
 	"github.com/kelseyhightower/envconfig"
 	"github.com/valyala/fasthttp"
 
-	"github.com/GeoIrb/tochka-test/pkg/parser"
+	"github.com/GeoIrb/tochka-test/pkg/converter"
+	"github.com/GeoIrb/tochka-test/pkg/filter"
 	"github.com/GeoIrb/tochka-test/pkg/postgres"
+	"github.com/GeoIrb/tochka-test/pkg/rss"
 	"github.com/GeoIrb/tochka-test/pkg/service"
 	"github.com/GeoIrb/tochka-test/pkg/service/httperrors"
 	"github.com/GeoIrb/tochka-test/pkg/service/httpserver"
@@ -33,10 +35,10 @@ type configuration struct {
 	DBConnectLayout string `envconfig:"DB_CONNECT_LAYOUT" default:"host=%s port=%d user=%s password=%s dbname=%s sslmode=disable"`
 
 	StorageInsertNews   string `envconfig:"STORAGE_INSERT_NEWS" default:"INSERT INTO public.news (title, pubDate) VALUES ($1, $2)"`
-	StorageSelectNews   string `envconfig:"STORAGE_SELECT_NEWS" default:"DELETE FROM public.news WHERE title like '%' || $1 || '%'"`
+	StorageSelectNews   string `envconfig:"STORAGE_SELECT_NEWS" default:"SELECT (title, pubDate) FROM public.news WHERE title like '%' || $1 || '%'"`
 	StorageAllTitleNews string `envconfig:"STORAGE_ALL_TITLE_NEWS" default:""`
 
-	IntervalTracking time.Duration `envconfig:"INTERVAL_TRACKING" default:"10m"`
+	IntervalTracking time.Duration `envconfig:"INTERVAL_TRACKING" default:"1m"`
 	SiteTimeout      time.Duration `envconfig:"SITE_TIMEOUT" default:"2s"`
 }
 
@@ -48,8 +50,9 @@ func main() {
 	}
 
 	st := site.NewSite(cfg.SiteTimeout)
-
-	pr := parser.NewParser()
+	r := rss.NewRSS()
+	flr := filter.NewFilter()
+	cnv := converter.NewConverter()
 
 	db := postgres.NewPostgres(
 		cfg.DBHost,
@@ -76,7 +79,9 @@ func main() {
 
 	svc := service.NewService(
 		st,
-		pr,
+		r,
+		flr,
+		cnv,
 		srg,
 		cfg.IntervalTracking,
 	)

@@ -1,12 +1,12 @@
 package models
 
-// Item ...
-type Item struct {
-	PubDate string `xml:"pubDate"`
-	Title   string `xml:"title"`
+// News ...
+type News struct {
+	Title   string `db:"title" json:"title" xml:"title"`
+	PubDate string `db:"pubDate" json:"pubDate" xml:"pubDate"`
 }
 
 // Rss ...
 type Rss struct {
-	Items []Item `xml:"channel>item"`
+	News []News `xml:"channel>item"`
 }
