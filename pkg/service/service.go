@@ -15,7 +15,7 @@ type storage interface {
 }
 
 type site interface {
-	GetDate(url string) (data []byte, err error)
+	GetDatа(url string) (data []byte, err error)
 }
 
 type rss interface {
@@ -138,7 +138,7 @@ func (s *service) tracking(ctx context.Context, url, format string) {
 }
 
 func (s *service) getNews(url, format string) {
-	if data, err := s.site.GetDate(url); err == nil {
+	if data, err := s.site.GetDatа(url); err == nil {
 		rss := s.rss.Parse(data)
 		news := s.filter.News(rss.News, format, s.interval)
 		s.newsChan <- s.converter.News(news)

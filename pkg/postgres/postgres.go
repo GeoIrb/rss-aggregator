@@ -1,4 +1,4 @@
-package postgres
+package Postgres
 
 import (
 	"fmt"
@@ -8,15 +8,8 @@ import (
 	_ "github.com/lib/pq"
 )
 
-// Postgres ...
-type Postgres interface {
-	Connect() (err error)
-	Ping() (err error)
-	Query(query string, args ...interface{}) (err error)
-	Select(dest interface{}, query string, args ...interface{}) (err error)
-}
-
-type postgres struct {
+// Postgres struct for working with pg db
+type Postgres struct {
 	db *sqlx.DB
 
 	host     string
@@ -29,31 +22,36 @@ type postgres struct {
 	connectLayout string
 }
 
-func (p *postgres) Connect() (err error) {
+// Connect connect to postgres db
+func (p *Postgres) Connect() (err error) {
 	connecting := fmt.Sprintf(p.connectLayout, p.host, p.port, p.user, p.password, p.dbName)
 	p.db, err = sqlx.Connect(p.dbDriver, connecting)
 	return
 }
 
-func (p *postgres) Ping() (err error) {
+// Ping check connection with db
+func (p *Postgres) Ping() (err error) {
 	err = p.db.Ping()
 	return
 }
 
-func (p *postgres) Query(query string, args ...interface{}) (err error) {
+// Query query to db
+func (p *Postgres) Query(query string, args ...interface{}) (err error) {
 	_, err = p.db.Query(query, args...)
 	return
 }
 
-func (p *postgres) Get(dest interface{}, query string, args ...interface{}) (err error) {
+// Get get query to db, dest not array
+func (p *Postgres) Get(dest interface{}, query string, args ...interface{}) (err error) {
 	return p.db.Get(dest, query, args...)
 }
 
-func (p *postgres) Select(dest interface{}, query string, args ...interface{}) (err error) {
+// Select select query to db, dest is array
+func (p *Postgres) Select(dest interface{}, query string, args ...interface{}) (err error) {
 	return p.db.Select(dest, query, args...)
 }
 
-// NewPostgres ...
+// NewPostgres construct
 func NewPostgres(
 	host string,
 	port int,
@@ -63,8 +61,8 @@ func NewPostgres(
 
 	dbDriver string,
 	connectLayout string,
-) Postgres {
-	return &postgres{
+) *Postgres {
+	return &Postgres{
 		host:     host,
 		port:     port,
 		user:     user,

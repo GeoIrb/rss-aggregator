@@ -6,23 +6,20 @@ import (
 	"github.com/valyala/fasthttp"
 )
 
-// Site ...
-type Site interface {
-	GetDate(url string) (data []byte, err error)
-}
-
-type site struct {
+// Site handler
+type Site struct {
 	timeout time.Duration
 }
 
-func (s *site) GetDate(url string) (data []byte, err error) {
+// GetDatа function for get data from url
+func (s *Site) GetDatа(url string) (data []byte, err error) {
 	_, data, err = fasthttp.GetTimeout(nil, url, s.timeout)
 	return
 }
 
-// NewSite ...
-func NewSite(timeout time.Duration) Site {
-	return &site{
+// NewSite constructor site handler
+func NewSite(timeout time.Duration) *Site {
+	return &Site{
 		timeout: timeout,
 	}
 }

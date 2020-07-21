@@ -15,12 +15,7 @@ type db interface {
 }
 
 // Storage ...
-type Storage interface {
-	AddNews(newsField ...string) (err error)
-	GetNews(ctx context.Context, title *string) (news []models.News, err error)
-}
-
-type storage struct {
+type Storage struct {
 	db db
 
 	insertNews string
@@ -29,7 +24,8 @@ type storage struct {
 	allTitle string
 }
 
-func (s *storage) AddNews(newsField ...string) (err error) {
+// AddNews add news in storage
+func (s *Storage) AddNews(newsField ...string) (err error) {
 	if err = s.db.Ping(); err != nil {
 		if err = s.db.Connect(); err != nil {
 			err = fmt.Errorf("connect db %s", err)
@@ -48,7 +44,8 @@ func (s *storage) AddNews(newsField ...string) (err error) {
 	return
 }
 
-func (s *storage) GetNews(ctx context.Context, title *string) (news []models.News, err error) {
+// GetNews get news form storage
+func (s *Storage) GetNews(ctx context.Context, title *string) (news []models.News, err error) {
 	if err = s.db.Ping(); err != nil {
 		if err = s.db.Connect(); err != nil {
 			err = fmt.Errorf("connect db %s", err)
@@ -67,7 +64,7 @@ func (s *storage) GetNews(ctx context.Context, title *string) (news []models.New
 	return
 }
 
-// NewStorage ...
+// NewStorage construct 
 func NewStorage(
 	db db,
 
@@ -75,8 +72,8 @@ func NewStorage(
 	selectNews string,
 
 	allTitle string,
-) Storage {
-	return &storage{
+) *Storage {
+	return &Storage{
 		db:         db,
 		insertNews: insertNews,
 		selectNews: selectNews,

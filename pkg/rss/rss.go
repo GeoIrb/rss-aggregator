@@ -7,19 +7,16 @@ import (
 )
 
 // RSS ...
-type RSS interface {
-	Parse(data []byte) (rss models.Rss)
+type RSS struct {
 }
 
-type rss struct {
-}
-
-func (p *rss) Parse(data []byte) (rss models.Rss) {
+// Parse function for parsing rss-lenta
+func (p *RSS) Parse(data []byte) (rss models.Rss) {
 	xml.Unmarshal(data, &rss)
 	return
 }
 
-// NewRSS ...
-func NewRSS() RSS {
-	return &rss{}
+// NewRSS construct
+func NewRSS() *RSS {
+	return &RSS{}
 }

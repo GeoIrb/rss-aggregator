@@ -6,7 +6,7 @@ type News struct {
 	PubDate string `db:"pubDate" xml:"pubDate" json:"pubDate"`
 }
 
-// Rss ...
+// Rss struct rss-line
 type Rss struct {
 	News []News `xml:"channel>item" json:"-"`
 }

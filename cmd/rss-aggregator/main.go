@@ -107,15 +107,13 @@ func main() {
 
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, syscall.SIGTERM, syscall.SIGINT)
+	
+	sig := <-c
+	fmt.Printf("received signal, exiting signal %v", sig)
 
-	defer func(sig os.Signal) {
+	if err := server.Shutdown(); err != nil {
+		fmt.Printf("server shutdown failure %v", err)
+	}
 
-		fmt.Printf("received signal, exiting signal %v", sig)
-
-		if err := server.Shutdown(); err != nil {
-			fmt.Printf("server shutdown failure %v", err)
-		}
-
-		fmt.Printf("goodbye")
-	}(<-c)
+	fmt.Printf("goodbye")
 }

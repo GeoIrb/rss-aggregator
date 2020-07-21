@@ -5,14 +5,11 @@ import (
 )
 
 // Converter ...
-type Converter interface {
-	News(src []models.News) (dst [][]string)
+type Converter struct {
 }
 
-type converter struct {
-}
-
-func (c *converter) News(src []models.News) (dst [][]string) {
+// News convert news to slice of []string
+func (c *Converter) News(src []models.News) (dst [][]string) {
 	dst = make([][]string, 0, len(src))
 	for _, news := range src {
 		data := make([]string, 2)
@@ -23,7 +20,7 @@ func (c *converter) News(src []models.News) (dst [][]string) {
 	return
 }
 
-// NewConverter ...
-func NewConverter() Converter {
-	return &converter{}
+// NewConverter construct
+func NewConverter() *Converter {
+	return &Converter{}
 }

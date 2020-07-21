@@ -7,14 +7,11 @@ import (
 )
 
 // Filter ...
-type Filter interface {
-	News(src []models.News, format string, interval time.Duration) (dst []models.News)
+type Filter struct {
 }
 
-type filter struct {
-}
-
-func (f *filter) News(src []models.News, format string, interval time.Duration) (dst []models.News) {
+// News filtering news
+func (f *Filter) News(src []models.News, format string, interval time.Duration) (dst []models.News) {
 	dst = make([]models.News, 0, len(src))
 	for _, news := range src {
 		border := time.Now().Add(-interval)
@@ -26,7 +23,7 @@ func (f *filter) News(src []models.News, format string, interval time.Duration) 
 	return
 }
 
-// NewFilter ...
-func NewFilter() Filter {
-	return &filter{}
+// NewFilter construct
+func NewFilter() *Filter {
+	return &Filter{}
 }
