@@ -3,7 +3,7 @@ package rss
 import (
 	"encoding/xml"
 
-	"github.com/GeoIrb/rss-aggregator/pkg/models"
+	"github.com/geoirb/rss-aggregator/pkg/models"
 )
 
 // RSS ...

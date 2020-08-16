@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/GeoIrb/rss-aggregator/pkg/models"
+	"github.com/geoirb/rss-aggregator/pkg/models"
 )
 
 type storage interface {
@@ -14,7 +14,7 @@ type storage interface {
 	GetNews(ctx context.Context, title *string) (news []models.News, err error)
 }
 
-type site interface {
+type source interface {
 	GetDatа(url string) (data []byte, err error)
 }
 
@@ -60,7 +60,7 @@ type Service interface {
 }
 
 type service struct {
-	site      site
+	source    source
 	rss       rss
 	filter    filter
 	converter converter
@@ -138,7 +138,7 @@ func (s *service) tracking(ctx context.Context, url, format string) {
 }
 
 func (s *service) getNews(url, format string) {
-	if data, err := s.site.GetDatа(url); err == nil {
+	if data, err := s.source.GetDatа(url); err == nil {
 		rss := s.rss.Parse(data)
 		news := s.filter.News(rss.News, format, s.interval)
 		s.newsChan <- s.converter.News(news)
@@ -147,7 +147,7 @@ func (s *service) getNews(url, format string) {
 
 // NewService ...
 func NewService(
-	site site,
+	source source,
 	rss rss,
 	filter filter,
 	converter converter,
@@ -155,7 +155,7 @@ func NewService(
 	interval time.Duration,
 ) Service {
 	return &service{
-		site:      site,
+		source:    source,
 		rss:       rss,
 		filter:    filter,
 		converter: converter,

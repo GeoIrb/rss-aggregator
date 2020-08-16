@@ -3,7 +3,7 @@ package filter
 import (
 	"time"
 
-	"github.com/GeoIrb/rss-aggregator/pkg/models"
+	"github.com/geoirb/rss-aggregator/pkg/models"
 )
 
 // Filter ...

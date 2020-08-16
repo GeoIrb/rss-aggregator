@@ -4,7 +4,7 @@ package httpserver
 
 import (
 	json "encoding/json"
-	models "github.com/GeoIrb/rss-aggregator/pkg/models"
+	models "github.com/geoirb/rss-aggregator/pkg/models"
 	easyjson "github.com/mailru/easyjson"
 	jlexer "github.com/mailru/easyjson/jlexer"
 	jwriter "github.com/mailru/easyjson/jwriter"
@@ -18,7 +18,7 @@ var (
 	_ easyjson.Marshaler
 )
 
-func easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver(in *jlexer.Lexer, out *getNewsTransport) {
+func easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver(in *jlexer.Lexer, out *getNewsTransport) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -47,7 +47,7 @@ func easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver(in *jle
 		in.Consumed()
 	}
 }
-func easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver(out *jwriter.Writer, in getNewsTransport) {
+func easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver(out *jwriter.Writer, in getNewsTransport) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -57,27 +57,27 @@ func easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver(out *jw
 // MarshalJSON supports json.Marshaler interface
 func (v getNewsTransport) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver(&w, v)
+	easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v getNewsTransport) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver(w, v)
+	easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *getNewsTransport) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver(&r, v)
+	easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *getNewsTransport) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver(l, v)
+	easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver(l, v)
 }
-func easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver1(in *jlexer.Lexer, out *getNewsResponse) {
+func easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver1(in *jlexer.Lexer, out *getNewsResponse) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -129,7 +129,7 @@ func easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver1(in *jl
 		in.Consumed()
 	}
 }
-func easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver1(out *jwriter.Writer, in getNewsResponse) {
+func easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver1(out *jwriter.Writer, in getNewsResponse) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -155,27 +155,27 @@ func easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver1(out *j
 // MarshalJSON supports json.Marshaler interface
 func (v getNewsResponse) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver1(&w, v)
+	easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver1(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v getNewsResponse) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver1(w, v)
+	easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver1(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *getNewsResponse) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver1(&r, v)
+	easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver1(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *getNewsResponse) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver1(l, v)
+	easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver1(l, v)
 }
-func easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver2(in *jlexer.Lexer, out *stopTrackingTransport) {
+func easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver2(in *jlexer.Lexer, out *stopTrackingTransport) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -204,7 +204,7 @@ func easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver2(in *jl
 		in.Consumed()
 	}
 }
-func easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver2(out *jwriter.Writer, in stopTrackingTransport) {
+func easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver2(out *jwriter.Writer, in stopTrackingTransport) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -214,27 +214,27 @@ func easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver2(out *j
 // MarshalJSON supports json.Marshaler interface
 func (v stopTrackingTransport) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver2(&w, v)
+	easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver2(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v stopTrackingTransport) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver2(w, v)
+	easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver2(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *stopTrackingTransport) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver2(&r, v)
+	easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver2(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *stopTrackingTransport) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver2(l, v)
+	easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver2(l, v)
 }
-func easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver3(in *jlexer.Lexer, out *stopTrackingRequest) {
+func easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver3(in *jlexer.Lexer, out *stopTrackingRequest) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -265,7 +265,7 @@ func easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver3(in *jl
 		in.Consumed()
 	}
 }
-func easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver3(out *jwriter.Writer, in stopTrackingRequest) {
+func easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver3(out *jwriter.Writer, in stopTrackingRequest) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -280,27 +280,27 @@ func easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver3(out *j
 // MarshalJSON supports json.Marshaler interface
 func (v stopTrackingRequest) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver3(&w, v)
+	easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver3(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v stopTrackingRequest) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver3(w, v)
+	easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver3(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *stopTrackingRequest) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver3(&r, v)
+	easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver3(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *stopTrackingRequest) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver3(l, v)
+	easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver3(l, v)
 }
-func easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver4(in *jlexer.Lexer, out *startTrackingTransport) {
+func easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver4(in *jlexer.Lexer, out *startTrackingTransport) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -329,7 +329,7 @@ func easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver4(in *jl
 		in.Consumed()
 	}
 }
-func easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver4(out *jwriter.Writer, in startTrackingTransport) {
+func easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver4(out *jwriter.Writer, in startTrackingTransport) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -339,27 +339,27 @@ func easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver4(out *j
 // MarshalJSON supports json.Marshaler interface
 func (v startTrackingTransport) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver4(&w, v)
+	easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver4(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v startTrackingTransport) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver4(w, v)
+	easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver4(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *startTrackingTransport) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver4(&r, v)
+	easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver4(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *startTrackingTransport) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver4(l, v)
+	easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver4(l, v)
 }
-func easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver5(in *jlexer.Lexer, out *startTrackingRequest) {
+func easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver5(in *jlexer.Lexer, out *startTrackingRequest) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -392,7 +392,7 @@ func easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver5(in *jl
 		in.Consumed()
 	}
 }
-func easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver5(out *jwriter.Writer, in startTrackingRequest) {
+func easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver5(out *jwriter.Writer, in startTrackingRequest) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -412,23 +412,23 @@ func easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver5(out *j
 // MarshalJSON supports json.Marshaler interface
 func (v startTrackingRequest) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver5(&w, v)
+	easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver5(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v startTrackingRequest) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonC87d08bdEncodeGithubComGeoIrbTochkaTestPkgServiceHttpserver5(w, v)
+	easyjsonC87d08bdEncodeGithubComgeoirbTochkaTestPkgServiceHttpserver5(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *startTrackingRequest) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver5(&r, v)
+	easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver5(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *startTrackingRequest) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonC87d08bdDecodeGithubComGeoIrbTochkaTestPkgServiceHttpserver5(l, v)
+	easyjsonC87d08bdDecodeGithubComgeoirbTochkaTestPkgServiceHttpserver5(l, v)
 }

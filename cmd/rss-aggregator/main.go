@@ -12,15 +12,15 @@ import (
 	"github.com/kelseyhightower/envconfig"
 	"github.com/valyala/fasthttp"
 
-	"github.com/GeoIrb/rss-aggregator/pkg/converter"
-	"github.com/GeoIrb/rss-aggregator/pkg/filter"
-	"github.com/GeoIrb/rss-aggregator/pkg/postgres"
-	"github.com/GeoIrb/rss-aggregator/pkg/rss"
-	"github.com/GeoIrb/rss-aggregator/pkg/service"
-	"github.com/GeoIrb/rss-aggregator/pkg/service/httperrors"
-	"github.com/GeoIrb/rss-aggregator/pkg/service/httpserver"
-	"github.com/GeoIrb/rss-aggregator/pkg/site"
-	"github.com/GeoIrb/rss-aggregator/pkg/storage"
+	"github.com/geoirb/rss-aggregator/pkg/converter"
+	"github.com/geoirb/rss-aggregator/pkg/filter"
+	"github.com/geoirb/rss-aggregator/pkg/postgres"
+	"github.com/geoirb/rss-aggregator/pkg/rss"
+	"github.com/geoirb/rss-aggregator/pkg/service"
+	"github.com/geoirb/rss-aggregator/pkg/service/httperrors"
+	"github.com/geoirb/rss-aggregator/pkg/service/httpserver"
+	"github.com/geoirb/rss-aggregator/pkg/site"
+	"github.com/geoirb/rss-aggregator/pkg/storage"
 )
 
 type configuration struct {
@@ -107,7 +107,7 @@ func main() {
 
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, syscall.SIGTERM, syscall.SIGINT)
-	
+
 	sig := <-c
 	fmt.Printf("received signal, exiting signal %v", sig)
 
