@@ -11,14 +11,6 @@
 
 Создание базы данных
 
-```
-CREATE TABLE public.news (
-	id serial NOT NULL,
-	title varchar NOT NULL,
-	pubDate timestamp NOT NULL,
-	CONSTRAINT news_pkey PRIMARY KEY (id)
-);
-```
 # ToDo
  * [x] Добавление отслеживания RSS ленты
  * [x] Остановка отслеживания RSS ленты
