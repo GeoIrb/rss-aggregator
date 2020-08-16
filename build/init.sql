@@ -3,4 +3,5 @@ CREATE TABLE public.news (
 	title varchar NOT NULL,
 	pubDate timestamp NOT NULL,
 	CONSTRAINT news_pkey PRIMARY KEY (id)
+
 );
