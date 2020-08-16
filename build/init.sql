@@ -4,4 +4,3 @@ CREATE TABLE public.news (
 	pubDate timestamp NOT NULL,
 	CONSTRAINT news_pkey PRIMARY KEY (id)
 );
-
