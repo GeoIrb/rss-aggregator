@@ -19,7 +19,7 @@ type source interface {
 }
 
 type rss interface {
-	Parse(data []byte) (news models.Rss)
+	Parse(data []byte) (rss models.Rss, err error)
 }
 
 type filter interface {
@@ -139,9 +139,10 @@ func (s *service) tracking(ctx context.Context, url, format string) {
 
 func (s *service) getNews(url, format string) {
 	if data, err := s.source.GetDatа(url); err == nil {
-		rss := s.rss.Parse(data)
-		news := s.filter.News(rss.News, format, s.interval)
-		s.newsChan <- s.converter.News(news)
+		if rss, err := s.rss.Parse(data); err != nil {
+			news := s.filter.News(rss.News, format, s.interval)
+			s.newsChan <- s.converter.News(news)
+		}
 	}
 }
 

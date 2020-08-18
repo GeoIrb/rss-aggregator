@@ -41,7 +41,6 @@ func (e *ErrorProcessor) Encode(ctx context.Context, r *fasthttp.Response, err e
 	}
 	r.SetStatusCode(code)
 	r.SetBodyString(message)
-	return
 }
 
 // Decode reads a Service error from the given *http.Response.

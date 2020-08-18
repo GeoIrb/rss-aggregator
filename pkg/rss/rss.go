@@ -11,8 +11,8 @@ type RSS struct {
 }
 
 // Parse function for parsing rss-lenta
-func (p *RSS) Parse(data []byte) (rss models.Rss) {
-	xml.Unmarshal(data, &rss)
+func (p *RSS) Parse(data []byte) (rss models.Rss, err error) {
+	err = xml.Unmarshal(data, &rss)
 	return
 }
 
