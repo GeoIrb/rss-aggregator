@@ -64,7 +64,7 @@ func (s *Storage) GetNews(ctx context.Context, title *string) (news []models.New
 	return
 }
 
-// NewStorage construct 
+// NewStorage construct
 func NewStorage(
 	db db,
 

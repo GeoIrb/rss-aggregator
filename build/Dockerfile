@@ -1,9 +1,13 @@
-FROM postgres:latest
+FROM golang:alpine AS build
 
-ENV POSTGRES_USER rss_aggregator
-ENV POSTGRES_PASSWORD rss_aggregator
-ENV POSTGRES_DB rss_aggregator
+WORKDIR /go/src/rss-aggregator
+COPY . ./
 
-COPY init.sql /docker-entrypoint-initdb.d/
+RUN go build \
+    -o /out/service \
+    ./cmd/rss-aggregator/main.go
 
-EXPOSE 5432
+FROM alpine:latest
+WORKDIR /app
+COPY --from=build /out/service /app/service
+CMD ["/app/service"]
